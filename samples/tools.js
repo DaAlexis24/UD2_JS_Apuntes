@@ -21,3 +21,10 @@ export function countWords(sentence = '') {
   const words = sentence.split(' ');
   return words.length;
 }
+
+// Crea una función que genere una contraseña aleatoria con letras mayúsculas, letras minúsculas y números.
+
+export function createNewPassword() {
+  let pass = '';
+  return pass;
+}
