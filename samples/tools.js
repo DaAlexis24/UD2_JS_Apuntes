@@ -24,7 +24,47 @@ export function countWords(sentence = '') {
 
 // Crea una función que genere una contraseña aleatoria con letras mayúsculas, letras minúsculas y números.
 
-export function createNewPassword() {
-  let pass = '';
-  return pass;
+// Generalizada en randomIntegerInterval()
+// function randomDig() {
+//   return Math.trunc(Math.random() * 10);
+// }
+
+function randomIntegerInterval(min, max) {
+  return Math.trunc(Math.random() * (max + 1 - min) + min);
+}
+
+function randomLetter(params) {
+  const letters = 'abcdefghijklmnñopqrstuvwxyz';
+  const position = randomIntegerInterval(0, letters.length - 1);
+  return letters[position];
+}
+
+function shuffleString(word = '') {
+  const initialLetters = word.split('');
+  const finalLetters = [];
+  for (let i = 0; i < word.length; i++) {
+    const n = randomIntegerInterval(0, initialLetters.length - 1);
+    // permite darle al array una posición para que se extraiga el valor que esta en esa posición
+    const letter = initialLetters.splice(n, 1);
+    finalLetters.push(letter[0]);
+  }
+  return finalLetters.join('');
+}
+
+// S de SOLID: Single Responsibility
+export function generatePassword(length) {
+  let rounds = 2;
+  if (length > 6) {
+    rounds = Math.ceil(length / 3);
+  }
+  let result = '';
+  for (let i = 0; i < rounds; i++) {
+    result += randomIntegerInterval(0, 9);
+    result += randomLetter();
+    result += randomLetter().toUpperCase();
+  }
+  result = length <= 6 ? result : result.slice(0, length);
+  // if (length > 6) result = result.slice(0, length);
+  // return result;
+  return shuffleString(result);
 }
