@@ -29,6 +29,8 @@ Se usa la siguiente sentencia, para poder visualizarlo:
 
 ## Miércoles 11/12/2024
 
+### Más información acerca del Parse en JS
+
 En JS, los objetos no pueden mutar, pero si cambiar la información de sus propiedades.
 ![foo_baz_1](./assets/imag1_11-12-2024.png "Baz = Foo")
 
@@ -38,20 +40,40 @@ Por ello cuando a _baz_ le cambiamos el valor a alguno de sus campos, ocurre est
 Ahora, esto es peligroso ya que podemos perder información dentro del código sin quererlo, para ello podemos **CLONAR** el objeto, así:
 ![clonar_foo_into_baz](./assets/imag3_11-12-2024.png "Clonación de bajo nivel")
 
-> [!LOOK]
-> El DOM es un Objeto que apunta a propiedades que tienen otros objetos, así hasta terminar de recorrer el documento.
+> [!NOTE]
+> El DOM es un **Objeto** que apunta a **Propiedades** que tienen otros objetos, así hasta terminar de recorrer el documento.
 
-Actualmente se utiliza el comando `document.querySelector()` que nos sirve a la hora de **\*UBICAR**\_ objetos utilizando los **selectores** que crees en tu proyecto.
+### Más información acerca de los selectores e ID
 
-IDENTIFICADOR DATA-ID como ATRIBUTO
-Esto se selecciona en CSS utilizando
-`[data-id="value"] {property: value}`
-Y en Java utilizando:
-`document.querySelector("[data-id] = 1")`
+- **IDENTIFICADOR DATA-ID como ATRIBUTO en HTML:**
+  Se genera así: `<tag html data-id="value">`
 
-Si `querySelector()` no encuentra lo que le mandas, te responderá con un **NULL** o con un **UNDEFINED**, sabiendo esto puedes realizar operaciones lógicas
+  Esto se selecciona en CSS utilizando
+  `[data-id="value"] {property: value}`
 
-- NORMAS DE USO DE LOS ID
+  Y en Java utilizando:
+  `document.querySelector("[data-id] = 1")`
+
+- **Uso de selectores en JS**
+
+  Actualmente se utiliza el comando `document.querySelector()` que nos sirve a la hora de **\*UBICAR**\_ objetos utilizando los **selectores** que crees en tu proyecto.
+
+  Si `querySelector()` no encuentra lo que le mandas, te responderá con un **NULL** o con un **UNDEFINED**, sabiendo esto puedes realizar operaciones lógicas
+
+  También existe el método `querySelectorAll()` que se utiliza a la hora de ubicar clases, elementos HTML varios y atributos, de la siguiente manera:
+
+  ```Javascript
+    // Elementos varios
+    document.querySelectorAll("p");
+    // Clases
+    document.querySelectorAll(".basic");
+    // Atributos
+    document.querySelectorAll('[name = "name value"]');
+  ```
+
+  Si `querySelectorAll()` no encuentra lo que le mandas, te responderá con un **NULL** o con un **[void]** si es que le mandas a buscar clases o atributos, sabiendo esto puedes realizar operaciones lógicas.
+
+- **NORMAS DE USO DE LOS ID EN HTML**
 
   - El oficial es **data-id**
   - El id es _ÚNICO_, por ende este ejemplo:
@@ -64,6 +86,34 @@ Si `querySelector()` no encuentra lo que le mandas, te responderá con un **NULL
       <main id="header-1" data-id="2"></main>
     ```
 
-    Es \_**ERRÓNEO\***, ya que tiene al id \_header-1\* en 2 posiciones.
+    Es \*\*ERRÓNEO\*\*\*, ya que tiene al id **header-1** en 2 posiciones.
 
-  - También, por convenio, los \_id\* tienen que empezar **siempre** con una letra.
+  - También, por convenio, los **id** tienen que empezar **siempre** con una letra.
+
+### Pareja Clave - Valor en HTML (dl)
+
+Es una estructura similar a las listas donde puedes asignar una cabecera `<dt>` y los elementos que pertenecen ahí `<dd>`.
+
+Para que [la estructura _dl_ en index.html](../web/index.html) pueda recibir datos, utilizaremos una codificación en JS. Para ello vamos a crear el siguiente **array de objetos**:
+
+```JavaScript
+const players = [
+  { firstName: "", surname: "", alias: "", icon: "" },
+  { firstName: "", surname: "", alias: "", icon: "" },
+];
+```
+
+> [!IMPORTANT]
+> Para añadir un valor dentro de una propiedad del objeto utilizo la siguiente sentencia:
+>
+> `players[1].alias = players[1].firstName;`.
+>
+> En ese caso, el _alias_ del objeto[1] coge el valor del _firstName_ del objeto[1].
+
+Luego de declarar **_players_** vamos a realizar la sentencia para poder seleccionar las etiquetas HTML que vamos a modificar desde nuestro [index.js](../web/index.js "Index JS"):
+
+`const ddElements = document.querySelectorAll(".tres-raya dd");`
+
+Entendemos que hay varios _ddElements_ dentro del código HTML
+
+-- Para evitar errores, en el **script** de HTML, debes de declararlo como type="module"
