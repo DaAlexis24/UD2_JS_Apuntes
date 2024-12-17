@@ -117,3 +117,21 @@ Luego de declarar **_players_** vamos a realizar la sentencia para poder selecci
 Entendemos que hay varios _ddElements_ dentro del código HTML
 
 -- Para evitar errores, en el **script** de HTML, debes de declararlo como type="module"
+
+## Lunes 16/12/2024
+
+- Hoisting: Este término fue pensado como una manera general de referirse a como funcionan los contextos de ejecución.
+
+¿Cómo se accede a un elemento que ya ha sufrido un action Event? Un AddEventListener siempre recibe un event.target (un trigger en otras palabras) que tenemos que inicializar como una constante tipo button
+
+`const elementButton = event.target`
+
+Y yo, a ese elemento le puedo otorgar una clase según corresponda, utilizando el atributo `.classList.add('nombre de la clase')`.
+
+- FORM DATA: Nos ayuda a la hora de realizar subidas de ficheros y o información.
+
+VALIDACIÓN:
+
+2 funciones para customizar:
+setCustomValidity(): Añade una cadena de caracteres con los errores que desees.
+reportValidity(): Nos ayuda a detectar errores en la interfaz.

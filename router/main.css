@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: bisque;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+body.portfolio {
+  background-color: chocolate;
+}
+
+body.about {
+  background-color: red;
+}
+
+body.contacts {
+  background-color: skyblue;
+}
