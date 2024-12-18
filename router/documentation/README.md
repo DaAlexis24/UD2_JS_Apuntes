@@ -162,3 +162,64 @@ Nos referimos a **LOS ELEMENTOS NATURALES** con los que diseñamos una pagina we
 Son un **armazón** de nuestros elementos, para que en vez de editar página por página, solo vamos al archivo JS correspondiente.
 
 Usualmente creamos una carpeta llamada **_components_** donde vamos a guardar todos los archivos que tengan como objetivo crear componentes HTML.
+
+## Miércoles 18/12/2024
+
+### Gestión de datos
+
+Metodología **CRUD** (Create, Read, Update, Delete) a la hora de trabajar con los datos
+
+### Entidades (Modelo)
+
+Esta definición de tareas se realiza a la hora de conseguir los requerimientos del cliente. Esto se potencia más con TypeScript
+
+```TS
+type Task = {
+  id: string, // UD-
+  title: string,
+  owner: string,
+  isDone: boolean,
+}
+```
+
+Estos datos suelen llegar en un archivo **_.json_**.
+
+```json
+[
+  {
+    "id": "9fff4359-2f6f-4031-8356-347653ed90c2",
+    "title": "string",
+    "owner": "string",
+    "isDone": true
+  }
+]
+```
+
+> UUID es un label de 128bits que se utilizan a la hora de identificar objetos en sistemas de computación de manera ÚNICA, debido a que soporta una gran cantidad de bits. JS cuenta con una función no estandarizada que nos permite generar números random UUID, se llama **crypto**. Si te da flojera utilizar esta función, en la web existen varias páginas que te ayudarán, como [UUID_Generator](https://www.uuidgenerator.net/)
+
+En sistemas pequeños, nos podemos quedar con solo los primeros 8 caracteres del UUID, para ello podemos utilizar la siguiente sentencia: `crypto.randomUUID().split("-")[0]`.
+
+### Teoría adicional
+
+- Los switch e IF se pueden sustituir de muchas formas, esto es para ahorrar evaluaciones innecesarias 
+
+- Operadores cortocircuito:
+
+  ```JS
+  true && true // true
+  true && false // false
+  false && true // false
+  false && false // false
+
+  true || true // true
+  true || false // true
+  false || true // true
+  false || false // false
+
+  // sigue si el anterior en nullish (null or undefined)
+  // no devuelve un boolean, sino lo que se encuentre
+  true ?? true // true
+  true ?? false // true
+  false ?? true // true
+  false ?? false // false
+  ```

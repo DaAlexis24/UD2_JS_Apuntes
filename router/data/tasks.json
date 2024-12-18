@@ -1,0 +1,26 @@
+[
+  {
+    "id": "9fff4359",
+    "title": "Diseño en Figma de la Guía de Estilos",
+    "owner": "Pedro",
+    "isDone": true
+  },
+  {
+    "id": "71d0b13d",
+    "title": "Diseño en Figma de Aplicación",
+    "owner": "Enriqueta",
+    "isDone": true
+  },
+  {
+    "id": "8eb5dfc4",
+    "title": "Creación del HTML",
+    "owner": "Enriqueta",
+    "isDone": false
+  },
+  {
+    "id": "e88da674",
+    "title": "Creación del CSS",
+    "owner": "Pedro",
+    "isDone": false
+  }
+]
