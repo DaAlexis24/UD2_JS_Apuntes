@@ -135,3 +135,15 @@ VALIDACIÓN:
 2 funciones para customizar:
 setCustomValidity(): Añade una cadena de caracteres con los errores que desees.
 reportValidity(): Nos ayuda a detectar errores en la interfaz.
+
+## Jueves 19/12/2024
+
+### Asincronía
+
+Es importante saber que las evaluaciones que se realizan a la hora de ejecutar páginas web, solicitud de consultas, etc, hay tiempos muertos mientras se realizan esas ejecuciones.
+
+JS es un lenguaje monohilo, es por ello que es muy potente a la hora de ejecutar muchas operaciones a la vez, que no consuman recursos del procesador, pero no es bueno a la hora de realizar cálculo.
+
+Un sistema paralelo consiste en tener un hilo para cada instrucción, es decir, si hay 100 instrucciones llegando, sí o sí debe de tener 100 hilos para ser eficiente, es por ello que este sistema no brilla.
+
+JS para solucionar ello utiliza los sistemas asíncronos, que es aprovechar los espacios libres para poder ejecutar otras funciones en cola. Existe las funciones como `setTimeOut` que se encarga de paralizar el tiempo de ejecución por cierto rango de tiempo y nos sirve para visualizar este fenómeno, ya que genera asincronía.

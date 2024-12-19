@@ -18,10 +18,12 @@ function loadIndex() {
   ];
 
   let page = location.pathname.split("/").at(-1).split(".").at(0);
+
   // aca nos defendemos por si la cadena llega vacía
   // page = "" ? "index" : page;
   // En esta expresión, el operador || solo te permite entrar si page no tiene valor, así se quedará con el valor index
   page = page || "index";
+
   // switch (page) {
   //   case "portfolio":
   //     loadPortfolio();

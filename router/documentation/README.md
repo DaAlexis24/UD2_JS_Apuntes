@@ -201,7 +201,7 @@ En sistemas pequeños, nos podemos quedar con solo los primeros 8 caracteres del
 
 ### Teoría adicional
 
-- Los switch e IF se pueden sustituir de muchas formas, esto es para ahorrar evaluaciones innecesarias 
+- Los switch e IF se pueden sustituir de muchas formas, esto es para ahorrar evaluaciones innecesarias
 
 - Operadores cortocircuito:
 
