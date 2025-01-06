@@ -1,1 +1,0 @@
-function divide(a, b) {}

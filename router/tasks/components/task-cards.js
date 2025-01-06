@@ -1,5 +1,7 @@
-import { render } from "../../components/base.js";
-import { createCard } from "./card.js";
+import { render } from '../../components/base.js';
+import { createCard } from './card.js';
+import { createAddTask } from './add-task.js';
+import { setTask, updateTask, deleteTask } from '../../services.js';
 
 //  id: string,
 //  title: string,
@@ -7,46 +9,59 @@ import { createCard } from "./card.js";
 //  isDone: boolean
 
 export function createTaskCards(
-  tasks,
-  selector = "body",
-  position = "beforeend"
+    tasks,
+    selector = 'body',
+    position = 'beforeend'
 ) {
-  function deleteCard({ id }) {
-    console.log(id);
-    // const index = tasks.findIndex((item) => item.id === id);
-    //tasks.splice(index, 1);
-    tasks.splice(
-      tasks.findIndex((item) => item.id === id),
-      1
-    );
-    console.log(tasks);
-  }
+    async function deleteCard({ id }) {
+        await deleteTask(id);
+        // const index = tasks.findIndex((item) => item.id === id);
+        //tasks.splice(index, 1);
+        tasks.splice(
+            tasks.findIndex((item) => item.id === id),
+            1
+        );
+        console.log(tasks);
+    }
 
-  function updateCard(updatedTask) {
-    const id = updatedTask.id;
-    const index = tasks.findIndex((item) => item.id === id);
-    tasks[index] = {
-      ...tasks[index],
-      ...updatedTask,
-    };
-  }
+    async function updateCard(updatedTask) {
+        const id = updatedTask.id;
+        try {
+            const finalTask = await updateTask(id, updatedTask);
+            const index = tasks.findIndex((item) => item.id === id);
+            tasks[index] = finalTask;
+            console.log(tasks);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
-  function addCard(task) {
-    task.id = task.id || crypto.randomUUID.split("-")[0];
-    tasks.push(task);
-  }
+    function addCard(task) {
+        // task.id = task.id || crypto.randomUUID().split('-')[0];
 
-  function extendedRender() {
-    document.querySelector(selector).innerHTML = "";
+        setTask(task)
+            .then((fullTask) => {
+                tasks.push(fullTask);
+                console.log(tasks);
+                createCard(fullTask, deleteCard, updateCard, 'ul.cards');
+            })
+            .catch((error) => console.log(error.message));
+    }
 
-    const element = render(selector, position, template);
-    tasks.forEach((task) => createCard(task, deleteCard, "ul.cards"));
-    return element;
-  }
+    function extendedRender() {
+        document.querySelector(selector).innerHTML = '';
 
-  const template = /*html*/ `
+        const element = render(selector, position, template);
+        createAddTask(addCard, 'details');
+        tasks.forEach((task) =>
+            createCard(task, deleteCard, updateCard, 'ul.cards')
+        );
+        return element;
+    }
+
+    const template = /*html*/ `
     <ul class="cards">
     </ul>
     `;
-  const element = extendedRender();
+    const element = extendedRender();
 }

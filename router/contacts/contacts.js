@@ -1,7 +1,7 @@
-import { createHeader } from "../components/header.js";
+import { createHeader } from '../components/header.js';
 
 export function loadContacts() {
-  console.log("Loaded Contacts!!");
-  const pageTittle = "Contacts";
-  createHeader(pageTittle);
+    console.log('loaded contacts');
+    const pageTitle = 'Contactos';
+    createHeader(pageTitle);
 }

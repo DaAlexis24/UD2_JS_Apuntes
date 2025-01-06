@@ -1,18 +1,18 @@
-import { render } from "./base.js";
-export function createFooter(selector = "body", position = "afterbegin") {
-  const linksCollection = {
-    cas: {
-      url: "https://cursoscastraining.es/cursos-subvencionados/centro-de-formacion-digital-de-san-blas/",
-      title: "CAS Training",
-    },
-    cfdsb: {
-      url: "https://cursoscastraining.es/cursos-subvencionados/centro-de-formacion-digital-de-san-blas/",
-      title: "Centro de Formación Digital San Blas (CFD-SB)",
-      address: ["C. de Arcos de Jalón, 15", "San Blas", "28037 Madrid"],
-    },
-  };
+import { render } from './base.js';
 
-  const template = /*html*/ `
+export function createFooter(selector = 'body', position = 'beforeend') {
+    const linksCollection = {
+        cas: {
+            url: 'https://cursoscastraining.es/cursos-subvencionados/centro-de-formacion-digital-de-san-blas/',
+            title: 'CAS Training',
+        },
+        cfdsb: {
+            url: 'https://cursoscastraining.es/cursos-subvencionados/centro-de-formacion-digital-de-san-blas/',
+            title: 'Centro de Formación Digital San Blas (CFD-SB)',
+            address: ['C. de Arcos de Jalón, 15', 'San Blas', '28037 Madrid'],
+        },
+    };
+    const template = /*html*/ `
     <footer>
         <address>
             <span>
@@ -27,5 +27,6 @@ export function createFooter(selector = "body", position = "afterbegin") {
         </address>
     </footer>
     `;
-  return render(selector, position, template);
+
+    render(selector, position, template);
 }
