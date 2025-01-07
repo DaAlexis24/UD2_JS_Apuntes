@@ -275,3 +275,19 @@ const {owner} = Astro.props
     Soy el footer de {owner}
 </footer>
 ```
+
+##### Layouts
+
+Son la carpeta donde generaremos los metadatos de las _pages_ que vamos a utilizar.
+
+A la hora de referenciar un favicon, si ese esta en public, solo debemos colocar el nombre del archivo.
+
+Ahora, esto en concepto es como un envolvente, que utilizará un **slot** para colocar la información de la _page_ que se ha creado.
+
+Esta interacción se realiza de la siguiente manera:
+
+- Layout (layoutGoT.astro)
+
+  ```js
+
+  ```
